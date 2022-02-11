@@ -13,12 +13,14 @@ class NN(nn.Module):
     def __init__(self, input_size, num_classes):
         super(NN, self).__init__()
         
-        self.fc1 = nn.Linear(input_size, 50)
-        self.fc2 = nn.Linear(50, num_classes)
+        self.fc1 = nn.Linear(input_size, 100)
+        self.fc2 = nn.Linear(100, 100)
+        self.fc3 = nn.Linear(100, num_classes)
         
     def forward(self, x):
         x = F.relu(self.fc1(x))
-        x = self.fc2(x)
+        x = F.relu(self.fc2(x))
+        x = self.fc3(x)
         return x
 
 
@@ -30,7 +32,7 @@ print("Using device = {}".format(device))
 input_size = 784
 num_classes = 10
 learning_rate = 0.001
-batch_size = 64
+batch_size = 256
 num_epochs = 5
 
 # Load data
