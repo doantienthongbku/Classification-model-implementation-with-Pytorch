@@ -118,7 +118,7 @@ def test(device='cpu'):
     print(net)
     from torchsummary import summary
     summary(net, input_data=(3, 224, 224), device=device)
-    x = torch.randn(16, 3, 224, 224)
+    x = torch.randn(2, 3, 224, 224)
     y = net(x).to(device)
     print(y.shape)
 
